@@ -10,7 +10,7 @@ body:
     options:
       - label: Orange cat (required. Everyone likes orange cats.)
         required: true
-      - label: **Black cat**
+      - label: *lack cat
 - type: textarea
   attributes: 
     label: Describe the Bug
