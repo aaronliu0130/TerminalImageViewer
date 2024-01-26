@@ -2,7 +2,7 @@ name: Build and run
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "github-actions-image-test" ]
   pull_request:
     branches: [ "*" ]
 
@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: make -C src
     - name: Test
-      run: ./src/tiv -w 80 -h 24 /usr/share/pixmaps/debian-logo.png
+      run: ./src/tiv -w 80 -h 24 -d /opt/microsoft/msedge/product_logo_128.png /opt/google/chrome/product_logo_128.png /home/runner/.nvm/.github/external-threat-actor.png /home/runner/.nvm/.github/insider-threat-actor-and-libs.png /home/linuxbrew/.linuxbrew/Homebrew/package/resources/Homebrew.png /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/test/support/fixtures/test.png /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/test/support/fixtures/test.jpg /home/linuxbrew/.linuxbrew/Homebrew/docs/assets/img/docs/ /usr/local/share/icons/hicolor/128x128/apps/CMakeSetup.png /usr/local/doc/cmake/html/_static/ /usr/local/lib/android/sdk/extras/google/google_play_services/samples/tagmanager/cuteanimals/res/drawable/ /usr/local/lib/android/sdk/extras/google/google_play_services/samples/wallet/res/drawable-hdpi/ /usr/local/lib/node_modules/netlify-cli/node_modules/fastify/node_modules/pino/ /usr/share/plymouth/themes/spinner/watermark.png /usr/share/R/doc/manual/images/ /usr/share/miniconda/share/doc/xz/api/ /usr/share/pixmaps/ /usr/share/apache2/icons/apache_pb.png /usr/share/swift/usr/share/docc/render/developer-og-twitter.jpg /usr/share/doc/libpng-dev/examples/pngtest.png
