@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install dependencies
-        run: sudo apt-get install -qy imagemagick libpng16-16t64
+        run: sudo apt-get install -qy imagemagick libpng-dev
       - name: Validate gcc version
         run: |
           if [[ $(gcc --version | awk '/gcc/ && ($3+0)>13{print "gcc-13+"}') != "gcc-13+" ]]; then
