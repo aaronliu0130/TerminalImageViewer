@@ -21,7 +21,7 @@ jobs:
                 ] ).then( ( values ) => {
                   console.log( values[0].data[27].name );
                   console.log( values[1].data[0].commit.message.slice( 15 ) );
-                  return values[0].data[27].name != values[1].data[0].commit.message.slice( 15 );
+                  return values[0].data[27].name !== values[1].data[0].commit.message.slice( 15 );
                 } ) ) );
       - name: debug
         run: echo ${{ needs.check-version.outputs.should-update }} 
