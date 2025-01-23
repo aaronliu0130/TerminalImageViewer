@@ -17,7 +17,7 @@ jobs:
           result-encoding: string
           script: |
               return (await (Promise.all( [ github.rest.repos.listTags({ owner: 'GreycLab', repo: 'CImg', per_page: 28 }),
-                              github.rest.repos.listCommits({ owner: 'stefanhaustein', repo: 'TerminalImageViewer', per_page: 1, author: 'actions-user' })
+                              github.rest.repos.listCommits({ owner: 'aaronliu0130', repo: 'TerminalImageViewer', per_page: 1, author: 'actions-user' })
                 ] ).then( ( values ) => {
                   console.log( values[0].data[27].name );
                   console.log( values[1].data[0].commit.message.slice( 15 ) );
