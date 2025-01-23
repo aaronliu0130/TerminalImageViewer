@@ -20,7 +20,7 @@ jobs:
           script: |
               return await (Promise.all( [ github.rest.repos.listTags({ owner: 'GreycLab', repo: 'CImg', per_page: 28 }),
                               github.rest.repos.listCommits({ owner: 'stefanhaustein', repo: 'TerminalImageViewer', per_page: 1, author: 'actions-user' })
-                ] ).done( ( values ) => {
+                ] ).then( ( values ) => {
                   return values[0].data[27].name != values[1].data[0].commit.message.slice( 15 );
                 } ) );
   pull-file:
