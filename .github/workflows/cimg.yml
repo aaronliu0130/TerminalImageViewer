@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Fetch the latest tag (could be buggy)
         uses: actions/github-script@v7
-        id: should-update
+        id: latest-tag
         with:
           result-encoding: string
           script: |
@@ -21,15 +21,16 @@ jobs:
                 ] ).then( ( values ) => {
                   console.log( values[0].data[27].name );
                   console.log( values[1].data[0].commit.message.slice( 15 ) );
-                  return values[0].data[27].name !== values[1].data[0].commit.message.slice( 15 );
+                  if( values[0].data[27].name === values[1].data[0].commit.message.slice( 15 ) ) return "";
+                  return values[0].data[27].name;
                 } ) ) );
       - name: debug
-        run: echo ${{ needs.check-version.outputs.should-update }} 
+        run: echo ${{ needs.check-version.outputs.latest-tag }} 
   pull-file:
     name: Update CImg.h
     runs-on: ubuntu-latest
     needs: check-version
-    if: ${{ needs.check-version.outputs.should-update == 'true' }}
+    if: ${{ needs.check-version.outputs.latest-tag != '' }}
     steps:
       - uses: actions/checkout@v4
         name: Checkout this repository
