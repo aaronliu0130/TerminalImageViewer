@@ -34,8 +34,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         name: Checkout this repository
-        with:
-          token: ${{ secrets.CIMG_UPDATE_TOKEN }}
       - name: Download new CImg version
         uses: carlosperate/download-file-action@v2
         with:
