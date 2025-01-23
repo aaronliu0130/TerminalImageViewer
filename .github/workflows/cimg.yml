@@ -2,8 +2,6 @@ name: Update CImg
 on:
   schedule:
     - cron: 0 0 3 * * # The first day after this workflow was merged
-  release:
-    types: [published]
   workflow_dispatch:
 jobs:
   check-version:
@@ -23,6 +21,8 @@ jobs:
                 ] ).then( ( values ) => {
                   return values[0].data[27].name != values[1].data[0].commit.message.slice( 15 );
                 } ) );
+      - name: debug
+        run: echo ${{ needs.check-version.outputs.should-update }} 
   pull-file:
     name: Update CImg.h
     runs-on: ubuntu-latest
